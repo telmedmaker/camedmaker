@@ -1,0 +1,41 @@
+<div>
+    <div class="flex flex-col">
+        {% include "components/_headline.html" with text="Ausschlusskriterien" %}
+
+        <div class="grid w-full grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6 px-4 py-6 sm:p-8">
+
+            {% include 'components/_headline_question.html' with number="1" text="Liegen bei Ihnen eine der folgenden Ausschlusskriterien vor?" required=True %}
+
+            <div class="grid gap-4 col-span-full mt-4">
+                <template x-for="criterion in exclusionCriteria">
+                    <div class="border-l-2 border-blue-500/40">
+                        <p class="text-sm font-gray-600 ml-3 text-gray-700" x-text="criterion"></p>
+
+                    </div>
+                </template>
+            </div>
+
+            <div class="col-span-full">
+                <hr class="my-4">
+            </div>
+
+            <div class="col-span-full">
+                <div class="flex gap-3">
+                    <div class="flex h-6 shrink-0 items-center">
+                      <div class="group grid size-4 grid-cols-1">
+                        <input x-model="formValues.agreed_no_exclusion_criteria" id="agreed_no_exclusion_criteria" aria-describedby="agreed_no_exclusion_criteria-description" name="agreed_no_exclusion_criteria" type="checkbox" class="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-blue-500 checked:bg-blue-500 indeterminate:border-blue-500 indeterminate:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto">
+                        <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+                          <path class="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          <path class="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="text-sm/6">
+                      <label for="agreed_no_exclusion_criteria" class="font-medium text-gray-900">Ich bestätige, dass keine der oben genannten Ausschlusskriterien bei mir vorliegen.</label>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+    </div>
+</div>

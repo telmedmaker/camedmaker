@@ -1,0 +1,43 @@
+<div>
+    <div class="flex flex-col">
+        {% include "components/_headline.html" with text="Medikamente" %}
+
+        <div class="grid w-full grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6 px-4 py-6 sm:p-8">
+            {% include 'components/_headline_question.html' with number="1" text="Nehmen Sie regelmäßig Medikamente ein oder haben Sie in letzter Zeit Medikamente eingenommen? " required=True %}
+
+            <div class="grid gap-2 grid-cols-2 col-span-full">
+                {% include 'components/_select.html' with options="['Ja', 'Nein']" on_click="formValues.previously_taken_medication = option" is_selected="formValues.previously_taken_medication === option" %}
+            </div>
+
+            <div x-show="formValues.previously_taken_medication === 'Ja'" class="col-span-full">
+                <label for="previous_medication_details" class="block text-sm/6 text-gray-600">
+                    Um welches Medikament handelt es sich?
+                    <span class="text-red-500">*</span>
+                </label>
+                <div class="mt-2">
+                    <textarea x-model="formValues.previous_medication_details" rows="4" name="previous_medication_details" id="previous_medication_details" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"></textarea>
+                </div>
+            </div>
+
+            <div class="col-span-full">
+                <hr class="my-4">
+            </div>
+
+            {% include 'components/_headline_question.html' with number="2" text="Haben Sie bereits Erfahrungen mit der Einnahme von Cannabis (in Blütenform, als Extrakt o.ä.) gemacht?" required=True %}
+
+            <div class="grid gap-2 grid-cols-2 col-span-full">
+                {% include 'components/_select.html' with options="['Ja', 'Nein']" on_click="formValues.previously_taken_cannabis = option" is_selected="formValues.previously_taken_cannabis === option" %}
+            </div>
+
+            <div class="col-span-full">
+                <label for="previous_cannabis_details" class="block text-sm/6 text-gray-600">
+                    Wieso denken Sie, dass eine Behandlung mit Medizinal-Cannabis ihnen helfen kann?
+                </label>
+                <div class="mt-2">
+                    <textarea x-model="formValues.previous_cannabis_details" rows="4" name="previous_cannabis_details" id="previous_cannabis_details" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

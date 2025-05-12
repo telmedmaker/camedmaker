@@ -1,0 +1,16 @@
+<nav class="w-full sticky" aria-label="Progress">
+  <ol role="list" class="space-y-4 md:flex md:space-x-8 md:space-y-0">
+    <li class="md:flex-1">
+      <!-- Completed Step -->
+      <a href="#" class="group flex flex-col py-4 pl-4 hover:border-blue-800 md:pb-0 md:pl-0">
+        <span class="text-sm font-medium text-blue-600 group-hover:text-blue-800">Schritt <span x-text="stepNumber"></span> von <span x-text="stepCount"></span></span>
+        <span class="text-sm font-medium" x-text="stepName()"></span>
+      </a>
+      <div class="relative">
+        <div class="w-full h-2 bg-gray-100"></div>
+        <div class="h-2 bg-blue-500 absolute top-0" :style="{ width: '20%' }"></div>
+      </div>
+
+    </li>
+  </ol>
+</nav>

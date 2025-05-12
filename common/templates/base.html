@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezeptanfrage - Medicanova</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <script src="{% static 'js/alpine.js' %}" defer></script>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/medicanova-logo.png' %}"/>
+</head>
+    {% block body %}
+
+    {% endblock body %}
+
+    {% block footer %}
+    <footer class="w-full flex justify-center bg-white border-t mt-16" :class="!submissionNumber && (!(!userId && stepNumber === 3)) ? 'mb-20' : 'absolute bottom-0'">
+        <div class="flex flex-wrap gap-x-6 px-4 py-4 sm:py-8 text-sm">
+            <p class="text-gray-600">&copy; Medicanova</p>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://medicanova.de/impressum" target="_blank">Impressum</a>
+                <a href="https://medicanova.de/agb" target="_blank">AGB</a>
+                <a href="https://medicanova.de/datenschutz" target="_blank">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+    {% endblock footer %}
+</html>

@@ -1,0 +1,11 @@
+<div class="flex items-start gap-3 col-span-full text-gray-600 text-sm">
+    <div>
+        <div class="flex font-bold justify-center items-center bg-blue-500/20 text-blue-500 rounded-full w-6 h-6">
+            {{ number }}
+        </div>
+    </div>
+    <h3 class="mt-0.5">
+        {{ text }}
+        {% if required %}<span class="text-red-500">*</span>{% endif %}
+    </h3>
+</div>

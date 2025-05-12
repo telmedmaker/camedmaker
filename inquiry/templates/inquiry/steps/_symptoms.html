@@ -1,0 +1,64 @@
+<div>
+    <div class="flex flex-col">
+        {% include "components/_headline.html" with text="Beschwerden" %}
+
+        <div class="grid w-full grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6 px-4 py-6 sm:p-8">
+            {% include 'components/_headline_question.html' with number="1" text="Bitte wähle alle Symptome aus, die auf dich zutreffen" %}
+            <div class="grid gap-2 grid-cols-2 md:grid-cols-3 col-span-full">
+                {% include 'components/_select.html' with options="symptomOptions" on_click="toggleSymptom(option)" is_selected="formValues.symptoms.includes(option)" %}
+            </div>
+
+            <div class="col-span-full">
+                <label for="otherSymptoms" class="block text-sm/6 text-gray-600">
+                    Bitte erläutere deine Beschwerden. Liegen weitere Beschwerden vor?
+                    <span class="text-red-500">*</span>
+                </label>
+                <div class="mt-2">
+                    <textarea
+                        x-model="formValues.symptom_text" rows="4" name="otherSymptoms" id="otherSymptoms"
+                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500 sm:text-sm/6"
+                        :class="(formValues.symptom_text && formValues.symptom_text.length < 50) ? 'outline-red-500' : ''"
+                    >
+                    </textarea>
+                </div>
+                <div class="text-red-500 text-sm mt-2" x-show="formValues.symptom_text && formValues.symptom_text.length < 50">Es sind mindestens 50 Zeichen erforderlich.</div>
+            </div>
+
+            <hr class="col-span-full my-4">
+
+            {% include 'components/_headline_question.html' with number="2" text="Auf einer Skala von 1 bis 10: Wie sehr leiden Sie unter Ihren Beschwerden?" required=True %}
+
+            <div class="col-span-full">
+                <input x-model="formValues.symptom_severity" class="w-full h-2" type="range" step="" min="1" max="10">
+                <div class="text-sm text-gray-700 flex justify-between items-center mt-1">
+                    <span>ich leide gar nicht</span>
+                    <span>ich leide enorm</span>
+                </div>
+            </div>
+
+            <hr class="col-span-full my-4">
+
+            {% include 'components/_headline_question.html' with number="3" text="Seit wann bestehen die Beschwerden?" required=True %}
+
+            <div class="grid gap-2 grid-cols-2 md:grid-cols-3 col-span-full">
+                {% include 'components/_select.html' with options="symptomDurationOptions" on_click="formValues.symptom_duration = option" is_selected="formValues.symptom_duration === option" %}
+            </div>
+
+            <div class="col-span-full">
+                <hr class="w-full my-4">
+            </div>
+
+            {% include 'components/_headline_question.html' with number="4" text="Wurden Sie bezüglich Ihrer oben genannten Symptome bereits von einem Arzt behandelt?" required=True %}
+
+            <div class="grid gap-2 grid-cols-2 col-span-full">
+                {% include 'components/_select.html' with options="['Ja', 'Nein']" on_click="formValues.was_already_treated = option" is_selected="formValues.was_already_treated === option" %}
+            </div>
+
+            {% include 'components/_treatment_not_possible_warning.html' %}
+
+            <div class="col-span-full">
+            </div>
+        </div>
+
+    </div>
+</div>
